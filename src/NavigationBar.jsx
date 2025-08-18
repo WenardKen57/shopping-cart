@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import classes from "./navigationBarStyle.module.css";
 
 export default function NavigationBar() {
@@ -5,7 +6,7 @@ export default function NavigationBar() {
     <div className={classes.navigationBar}>
       <div>Logo</div>
       <div>
-        <span>Home</span>
+        <span><Link to={`home`}>Home</Link></span>
         <span>Browse</span>
         <span>About</span>
       </div>
