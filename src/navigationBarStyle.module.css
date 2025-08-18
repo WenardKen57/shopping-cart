@@ -3,3 +3,13 @@
   justify-content: space-around;
   background-color: aquamarine;
 }
+
+.linkSection {
+  width: 400px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.linkSection a {
+  text-decoration: none;
+}

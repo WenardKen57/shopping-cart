@@ -9,6 +9,7 @@ const routes = [
     element: <App />,
     children: [
       { path: "home", element: <Home /> },
+      { path: "browse", element: <Browse /> },
       { path: "", element: <Navigate to={`home`} /> },
     ],
   },
