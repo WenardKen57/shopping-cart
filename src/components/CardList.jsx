@@ -15,6 +15,7 @@ export default function CardList() {
           data.map((product) => {
             return (
               <Card
+                id={product.id}
                 img={product.image}
                 key={product.id}
                 title={product.title}

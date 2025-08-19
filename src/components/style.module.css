@@ -5,6 +5,11 @@
   padding: 20px;
 }
 
+.cardList a {
+  text-decoration: none;
+  color: black;
+}
+
 .card {
   height: 300px;
   border: 1px solid black;
@@ -38,4 +43,11 @@
 
 .cardImg {
   height: 100%;
+}
+
+
+.productView {
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
