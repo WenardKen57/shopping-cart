@@ -13,11 +13,24 @@
 }
 
 .cardDetail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
   border: 1px solid black;
   background-color: antiquewhite;
 }
 
+.cardDetail > span {
+  display: inline-block;     /* or block/flex */
+  max-width: 200px;          /* set a limit */
+  white-space: nowrap;       /* no line break */
+  overflow: hidden;          /* hide overflow */
+  text-overflow: ellipsis;   /* add "..." */
+}
+
 .cardImgContainer {
+  padding: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -25,5 +38,4 @@
 
 .cardImg {
   height: 100%;
-
 }
