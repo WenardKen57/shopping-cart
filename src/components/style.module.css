@@ -1,0 +1,29 @@
+.cardList {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(100px, 50%));
+  gap: 20px;
+  padding: 20px;
+}
+
+.card {
+  height: 300px;
+  border: 1px solid black;
+  display: grid;
+  grid-template-rows: 70% 30%;
+}
+
+.cardDetail {
+  border: 1px solid black;
+  background-color: antiquewhite;
+}
+
+.cardImgContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cardImg {
+  height: 100%;
+
+}

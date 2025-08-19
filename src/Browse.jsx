@@ -1,9 +1,9 @@
-import Product from "./Product";
+import CardList from "./components/CardList";
 
 export default function Browse() {
-  return <div>
-
-    <Product/>
-
-  </div>;
+  return (
+    <div>
+      <CardList />
+    </div>
+  );
 }
