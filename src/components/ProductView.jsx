@@ -7,6 +7,8 @@ export default function ProductView() {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
   const [products, setProducts] = useState(null);
+  const [cartForm, setCartForm] = useState(false);
+  const [quantity, setQuantity] = useState(null);
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -33,6 +35,10 @@ export default function ProductView() {
 
   if (!product) return <p>Product not found</p>;
 
+  const handleChangeQuantity = (event) => {
+    setQuantity(event.target.value);
+  };
+
   return (
     <>
       <div className={style.productView}>
@@ -43,6 +49,36 @@ export default function ProductView() {
         <div>
           <h1>{product && product.title}</h1>
           <p>{product && product.description}</p>
+          <h3>${product && product.price}</h3>
+          {cartForm && (
+            <dialog open>
+              <h2>{product.title}</h2>
+              <h3>${product.price * quantity}</h3>
+              <form method="dialog">
+                <input
+                  type="number"
+                  placeholder="How many of this item?"
+                  onChange={handleChangeQuantity}
+                  required
+                />
+              </form>
+              <button
+                onClick={() => {
+                  setCartForm(false);
+                }}
+                type="submit"
+              >
+                OK
+              </button>
+            </dialog>
+          )}
+          <button
+            onClick={() => {
+              setCartForm(true);
+            }}
+          >
+            Add to cart
+          </button>
         </div>
       </div>
     </>
