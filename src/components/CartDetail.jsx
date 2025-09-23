@@ -1,19 +1,12 @@
 import { useState } from "react";
-import { useData } from "../useData";
 
-export default function CartDetail({ productId, quantity }) {
+export default function CartDetail({ title, image, quantity }) {
   const [orderQuantity, setOrderQuantity] = useState(quantity);
-  const { data, loading, error } = useData(
-    `https://fakestoreapi.com/products/${productId}`
-  );
-
-  if (loading) return <h1>Loading...</h1>;
-  if (error) return <h1>Error: {error.message}</h1>;
 
   return (
     <li>
-      <img src={data && data.image} alt="product img" width={100} />
-      <div>Title: {data && data.title}</div>
+      <img src={image} alt="product img" width={100} />
+      <div>Title: {title}</div>
       <input
         type="number"
         onChange={(e) => setOrderQuantity(e.target.value)}
