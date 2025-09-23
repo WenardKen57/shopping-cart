@@ -1,12 +1,39 @@
-import { useParams } from "react-router-dom";
+import { redirect, useParams } from "react-router-dom";
 import style from "./style.module.css";
 import { useData } from "../useData";
+import { useState } from "react";
+
+export async function useAddToCart(cart) {
+  try {
+    const response = await fetch(`https://fakestoreapi.com/carts`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(cart),
+    });
+    if (!response.ok) throw new Error("Failed to post cart");
+    const data = await response.json();
+    console.log(data);
+  } catch (err) {
+    throw new Error("There's a network error that occured");
+  }
+}
 
 export default function ProductsView() {
   const { id } = useParams();
   const { data, error, loading } = useData(
     `https://fakestoreapi.com/products/${id}`
   );
+  const products = [];
+  const [quantity, setQuantity] = useState(1);
+
+  function handleAddToCart() {
+    for (let i = 0; i < quantity; i++) {
+      products.push(data);
+    }
+    const cart = { userId: 1, products: products };
+    useAddToCart(cart);
+    setQuantity(1);
+  }
 
   if (loading) return <h1>Loading...</h1>;
   if (error)
@@ -22,7 +49,30 @@ export default function ProductsView() {
         <div>
           <h1>{data.title}</h1>
           <p>{data.description}</p>
+          <h2>{data.price}</h2>
         </div>
+        <span>
+          <h3>Total price: {data.price * quantity}</h3>
+          <button
+            onClick={() => setQuantity((prevQuantity) => prevQuantity + 1)}
+          >
+            +
+          </button>
+          <input
+            type="number"
+            placeholder="Quantity"
+            value={quantity}
+            onChange={(e) => {
+              setQuantity(e.target.value);
+            }}
+          />
+          <button
+            onClick={() => setQuantity((prevQuantity) => prevQuantity - 1)}
+          >
+            -
+          </button>
+        </span>
+        <button onClick={handleAddToCart}>Add to cart</button>
       </div>
     </>
   );
