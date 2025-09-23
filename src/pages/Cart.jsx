@@ -47,6 +47,7 @@ export default function Cart() {
                 key={uuid4()}
                 title={product.title}
                 image={product.image}
+                price={product.price}
                 quantity={product.quantity}
               ></CartDetail>
             );
