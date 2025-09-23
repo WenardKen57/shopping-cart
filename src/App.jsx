@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import NavigationBar from "./NavigationBar";
+import NavigationBar from "./components/NavigationBar";
 
 export default function App() {
   return (

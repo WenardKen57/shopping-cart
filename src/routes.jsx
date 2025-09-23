@@ -1,8 +1,8 @@
 import { Navigate } from "react-router-dom";
 import App from "./App";
-import Browse from "./Browse";
-import Home from "./Home";
 import ProductView from "./components/ProductView";
+import Home from "./pages/Home";
+import Browse from "./pages/Browse";
 
 const routes = [
   {
