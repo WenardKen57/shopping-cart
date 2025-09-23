@@ -1,7 +1,15 @@
-const cart = [];
+let cart = [];
 
 export async function addToCart(product, quantity) {
-  cart.push({ product: product, quantity: quantity });
+  if (cart.some((item) => item.product.id === product.id)) {
+    cart = cart.map((item) =>
+      item.product.id === product.id
+        ? { ...item, quantity: item.quantity + quantity }
+        : item
+    );
+  } else {
+    cart.push({ product: product, quantity: quantity });
+  }
 }
 
 export async function getCart() {
