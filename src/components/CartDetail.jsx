@@ -12,6 +12,7 @@ export default function CartDetail({ productId, quantity }) {
 
   return (
     <li>
+      <img src={data && data.image} alt="product img" width={100} />
       <div>Title: {data && data.title}</div>
       <input
         type="number"
