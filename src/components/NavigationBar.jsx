@@ -12,7 +12,9 @@ export default function NavigationBar() {
         <span>
           <Link to={`browse`}>Browse</Link>
         </span>
-        <span>About</span>
+        <span>
+          <Link to={`/carts`}>Carts</Link>
+        </span>
       </div>
     </div>
   );
