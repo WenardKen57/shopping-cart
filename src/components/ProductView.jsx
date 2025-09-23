@@ -2,6 +2,7 @@ import { redirect, useParams } from "react-router-dom";
 import style from "./style.module.css";
 import { useData } from "../useData";
 import { useState } from "react";
+import { addToCart } from "../CartAPI";
 
 export async function useAddToCart(cart) {
   try {
@@ -23,15 +24,14 @@ export default function ProductsView() {
   const { data, error, loading } = useData(
     `https://fakestoreapi.com/products/${id}`
   );
-  const products = [];
   const [quantity, setQuantity] = useState(1);
 
   function handleAddToCart() {
-    for (let i = 0; i < quantity; i++) {
-      products.push(data);
-    }
-    const cart = { userId: 1, products: products };
-    useAddToCart(cart);
+    const callAddToCart = async () => {
+      await addToCart(data, quantity);
+    };
+
+    callAddToCart();
     setQuantity(1);
   }
 
