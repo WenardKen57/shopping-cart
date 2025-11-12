@@ -12,6 +12,16 @@ export async function addToCart(product, quantity) {
   }
 }
 
+export async function getTotalPayment() {
+  let sum = 0;
+
+  for (let i = 0; i < cart.length; i++) {
+    sum += cart[i].product.price * cart[i].quantity;
+  }
+
+  return sum;
+}
+
 export async function getCart() {
   return cart;
 }

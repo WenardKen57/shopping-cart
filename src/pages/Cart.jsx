@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
-import { getCart } from "../CartAPI";
+import { getCart, getTotalPayment } from "../CartAPI";
 import { v4 as uuidv4 } from "uuid";
 import styles from "./../styles/Cart.module.css";
 
 export default function Cart() {
   const [cart, setCart] = useState([]);
+  const [totalPayment, setTotalPayment] = useState(0);
+
   useEffect(() => {
     const fetchCart = async () => {
       const cartRes = await getCart();
@@ -12,6 +14,12 @@ export default function Cart() {
       setCart(cartRes);
     };
 
+    const fetchTotalPayment = async () => {
+      const res = await getTotalPayment();
+      setTotalPayment(res);
+    };
+
+    fetchTotalPayment();
     fetchCart();
   }, []);
 
@@ -32,6 +40,7 @@ export default function Cart() {
           );
         })}
       </ul>
+      <div>{totalPayment}</div>
     </div>
   );
 }
